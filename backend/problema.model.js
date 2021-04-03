@@ -25,4 +25,4 @@ let Problema = new Schema({
     }
 });
 
-module.expor = mongoose.model('Problema', Problema);
+module.exports = mongoose.model('Problema', Problema);

@@ -48,7 +48,7 @@ problemaRoutes.route('/add').post(function(req, res) {
 });
 
 problemaRoutes.route('/update/:id').post(function(req, res) {
-    Problema.fndById(req.params.id, function(err, problema) {
+    Problema.findById(req.params.id, function(err, problema) {
         if(!problema)
             res.status(404).send('No se encontró la información');
         else
