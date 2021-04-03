@@ -52,6 +52,7 @@ problemaRoutes.route('/update/:id').post(function(req, res) {
         if(!problema)
             res.status(404).send('No se encontró la información');
         else
+            problema.problema_nombre = req.body.problema_nombre;
             problema.problema_descripcion = req.body.problema_descripcion;
             problema.problema_foto = req.body.problema_foto;
             problema.problema_categoria = req.body.problema_categoria;
