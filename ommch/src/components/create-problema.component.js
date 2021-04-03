@@ -6,6 +6,7 @@ export default class CreateProblema extends Component {
     constructor(props) {
         super(props);
 
+        this.onChangeProblemaNombre = this.onChangeProblemaNombre.bind(this);
         this.onChangeProblemaDescripcion = this.onChangeProblemaDescripcion.bind(this);
         this.onChangeProblemaFoto = this.onChangeProblemaFoto.bind(this);
         this.onChangeProblemaCategoria = this.onChangeProblemaCategoria.bind(this);
@@ -17,6 +18,7 @@ export default class CreateProblema extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            problema_nombre: '',
             problema_descripcion: '',
             problema_foto: '',
             problema_categoria: 'Selecciona',
@@ -26,6 +28,12 @@ export default class CreateProblema extends Component {
             problema_nivel: 'Selecciona',
             problema_respuesta: ''
         }
+    }
+
+    onChangeProblemaNombre(e) {
+        this.setState({
+            problema_nombre: e.target.value
+        });
     }
 
     onChangeProblemaDescripcion(e) {
@@ -80,11 +88,13 @@ export default class CreateProblema extends Component {
         e.preventDefault();
 
         console.log(`Form submitted`);
+        console.log(`Nombre del problema ${this.state.problema_nombre}`);
         console.log(`Descripcion del problema ${this.state.problema_descripcion}`);
         console.log(`Categoria del problema ${this.state.problema_categoria}`);
         console.log(`Agregado por ${this.state.problema_agregado_por}`);
 
         const newProblema = {
+            problema_nombre: this.state.problema_nombre,
             problema_descripcion: this.state.problema_descripcion,
             problema_foto: this.state.problema_foto,
             problema_categoria: this.state.problema_categoria,
@@ -99,6 +109,7 @@ export default class CreateProblema extends Component {
         .then(res => console.log(res.data));
 
         this.setState({
+            problema_nombre: '',
             problema_descripcion: '',
             problema_foto: '',
             problema_categoria: 'Selecciona',
@@ -115,6 +126,13 @@ export default class CreateProblema extends Component {
             <div style={{marginTop: 20}}>
                 <h3>Agrega un nuevo problema</h3>
                 <form onSubmit={this.onSubmit}>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Nombre del Problema</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Nombre del problema: " aria-describedby="inputGroup-sizing-default" placeholder="Dame un nombe divertido" value={this.state.problema_nombre} onChange={this.onChangeProblemaNombre}/>
+                    </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Descripción del problema:</span>
