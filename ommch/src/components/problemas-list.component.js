@@ -2,6 +2,18 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+const Problema = props => (
+    <tr>
+        <td>{props.problema.problema_nombre}</td>
+        <td>{props.problema.problema_categoria}</td>
+        <td>{props.problema.problema_nivel}</td>
+        <td>{props.problema.problema_agregado_por}</td>
+        <td>
+            <Link to={"/edit/" + props.problema._id}>Editar</Link>
+        </td>
+    </tr>
+)
+
 export default class ProblemasList extends Component {
 
     constructor(props) {
@@ -19,6 +31,12 @@ export default class ProblemasList extends Component {
         });
     }
 
+    problemasList() {
+        return this.state.problemas.map(function(currentProblema, i) {
+            return <Problema problema={currentProblema} key={i} />;
+        });
+    }
+
     render() {
         return (
             <div>
@@ -30,8 +48,12 @@ export default class ProblemasList extends Component {
                             <th>Categoría</th>
                             <th>Nivel</th>
                             <th>Agregado por</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        { this.problemasList() }
+                    </tbody>
                 </table>
             </div>
         )
