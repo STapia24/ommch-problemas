@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import axios from 'axios';
+
 export default class CreateProblema extends Component {
 
     constructor(props) {
@@ -17,11 +19,11 @@ export default class CreateProblema extends Component {
         this.state = {
             problema_descripcion: '',
             problema_foto: '',
-            problema_categoria: '',
+            problema_categoria: 'Selecciona',
             problema_agregado_por: '',
             problema_libro: '',
             problema_anio: '',
-            problema_nivel: '',
+            problema_nivel: 'Selecciona',
             problema_respuesta: ''
         }
     }
@@ -82,14 +84,28 @@ export default class CreateProblema extends Component {
         console.log(`Categoria del problema ${this.state.problema_categoria}`);
         console.log(`Agregado por ${this.state.problema_agregado_por}`);
 
+        const newProblema = {
+            problema_descripcion: this.state.problema_descripcion,
+            problema_foto: this.state.problema_foto,
+            problema_categoria: this.state.problema_categoria,
+            problema_agregado_por: this.state.problema_agregado_por,
+            problema_libro: this.state.problema_libro,
+            problema_anio: this.state.problema_anio,
+            problema_nivel: this.state.problema_nivel,
+            problema_respuesta: this.state.problema_respuesta
+        }
+
+        axios.post('http://localhost:4000/problemas/add', newProblema)
+        .then(res => console.log(res.data));
+
         this.setState({
             problema_descripcion: '',
             problema_foto: '',
-            problema_categoria: '',
+            problema_categoria: 'Selecciona',
             problema_agregado_por: '',
             problema_libro: '',
             problema_anio: '',
-            problema_nivel: '',
+            problema_nivel: 'Selecciona',
             problema_respuesta: ''
         })
     }
