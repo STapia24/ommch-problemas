@@ -119,6 +119,7 @@ export default class CreateProblema extends Component {
             problema_nivel: 'Selecciona',
             problema_respuesta: ''
         })
+        this.props.history.push('/');
     }
 
     render() {

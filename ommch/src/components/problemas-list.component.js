@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Problema = props => (
     <tr>
-        <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_nombre}</td>
+        <td>{props.problema.problema_nombre}</td>
         <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_categoria}</td>
         <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_nivel}</td>
         <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_agregado_por}</td>
@@ -22,6 +22,16 @@ export default class ProblemasList extends Component {
     }
 
     componentDidMount() {
+        axios.get('http://localhost:4000/problemas/')
+        .then(response => {
+            this.setState({problemas: response.data});
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+    
+    componentDidUpdate() {
         axios.get('http://localhost:4000/problemas/')
         .then(response => {
             this.setState({problemas: response.data});
