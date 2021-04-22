@@ -4,10 +4,10 @@ import axios from 'axios';
 
 const Problema = props => (
     <tr>
-        <td>{props.problema.problema_nombre}</td>
-        <td>{props.problema.problema_categoria}</td>
-        <td>{props.problema.problema_nivel}</td>
-        <td>{props.problema.problema_agregado_por}</td>
+        <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_nombre}</td>
+        <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_categoria}</td>
+        <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_nivel}</td>
+        <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_agregado_por}</td>
         <td>
             <Link to={"/edit/" + props.problema._id}>Editar</Link>
         </td>
