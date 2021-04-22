@@ -11,6 +11,8 @@ import Button from 'react-bootstrap/Button';
 import CreateProblema from "./components/create-problema.component";
 import EditProblema from "./components/edit-problema.component";
 import ProblemasList from "./components/problemas-list.component";
+//import DeleteProblema from "./components/delete-problema.component";
+import ReadProblema from "./components/read-problema.component";
 
 import logo from "./logo.png";
 
@@ -36,6 +38,8 @@ function App() {
           <Route path="/" exact component={ProblemasList} />
           <Route path="/edit/:id" component={EditProblema} />
           <Route path="/create" component={CreateProblema} />
+          <Route path="/problema/:id" component={ReadProblema} />
+           {/* <Route path="/delete/:id" component={EliminaProblema} /> */}
         </div>
     </Router>
   );

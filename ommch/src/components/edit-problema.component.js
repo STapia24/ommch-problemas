@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Container';
 
 export default class EditProblema extends Component {
     constructor(props) {
@@ -204,7 +207,9 @@ export default class EditProblema extends Component {
                         </div>
                     </div>
                     <div classname="form-group">
+
                        <input type="submit" value="Actualizar Problema" className="btn btn-primary"/>
+                       <Button variant="danger" class="ml-10">Eliminar Problema</Button>
                     </div>
                 </form>
             </div>
