@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import { BsFillTrashFill } from 'react-icons/bs';
+import { BsFillEyeSlashFill } from 'react-icons/bs';
+import { BsPencilSquare } from 'react-icons/bs';
 
 const Problema = props => (
     <tr>
@@ -9,7 +15,9 @@ const Problema = props => (
         <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_nivel}</td>
         <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_agregado_por}</td>
         <td>
-            <Link to={"/edit/" + props.problema._id}>Editar</Link>
+            <Link to={"/edit/" + props.problema._id}><BsPencilSquare />  </Link>
+            <Link to={"/probelmas/" + props.problema._id}>   <BsFillEyeSlashFill /></Link>
+            <Link to={"/borrar/" + props.problema._id}>   <BsFillTrashFill /></Link>
         </td>
     </tr>
 )
@@ -30,7 +38,7 @@ export default class ProblemasList extends Component {
             console.log(error);
         });
     }
-    
+
     componentDidUpdate() {
         axios.get('http://localhost:4000/problemas/')
         .then(response => {
@@ -50,6 +58,14 @@ export default class ProblemasList extends Component {
     render() {
         return (
             <div>
+                <Jumbotron fluid>
+                    <Container>
+                        <h1>Problemario OMMCHEB 2021</h1>
+                        <p>
+                            Esta es una aplicación CRUD para el registro de problemas de la Olimpiada de Matemáticas para Educación Básica en Chihuahua.
+                        </p>
+                    </Container>
+                </Jumbotron>
                 <h3>Lista de Problemas</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
