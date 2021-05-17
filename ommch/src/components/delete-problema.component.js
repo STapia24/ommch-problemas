@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 //import Row from 'react-bootstrap/Row';
 //import Col from 'react-bootstrap/Container';
 
-export default class EditProblema extends Component {
+export default class DeleteProblema extends Component {
     constructor(props) {
         super(props);
         
@@ -110,18 +110,8 @@ export default class EditProblema extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        const obj = {
-            problema_nombre: this.state.problema_nombre,
-            problema_descripcion: this.state.problema_descripcion,
-            problema_foto: this.state.problema_foto,
-            problema_categoria: this.state.problema_categoria,
-            problema_agregado_por: this.state.problema_agregado_por,
-            problema_libro: this.state.problema_libro,
-            problema_anio: this.state.problema_anio,
-            problema_nivel: this.state.problema_nivel,
-            problema_respuesta: this.state.problema_respuesta
-        }
-        axios.post('http://localhost:4000/posts/'+this.props.match.params.id, obj)
+
+        axios.delete('http://localhost:4000/deletes/'+this.props.match.params.id)
         .then( res => console.log(res.data));
         this.props.history.push('/');
     }
@@ -208,8 +198,7 @@ export default class EditProblema extends Component {
                     </div>
                     <div classname="form-group">
 
-                       <input type="submit" value="Actualizar Problema" className="btn btn-primary"/>
-                       <Button variant="danger" class="ml-10">Eliminar Problema</Button>
+                       <input type="submit" value="Actualizar Problema" className="btn btn-danger"/>
                     </div>
                 </form>
             </div>

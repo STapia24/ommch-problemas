@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 
 export default class ReadProblema extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ export default class ReadProblema extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/problemas/'+this.props.match.params.id)
+        axios.get('http://localhost:4000/gets/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     problema_nombre: response.data.problema_nombre,
