@@ -20,6 +20,9 @@ let Problema = new Schema({
     problema_libro: {
         type: String 
     },
+    problema_fecha_libro: {
+        type: String 
+    },
     problema_nivel: {
         type: String
     },

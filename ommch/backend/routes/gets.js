@@ -15,9 +15,8 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     let id = req.params.id;
     Problema.findById(id, function(err, problema) {
-        if(problema)
         res.json(problema);
-        res.json({objectFound: false})
+        return
     });
 })
 

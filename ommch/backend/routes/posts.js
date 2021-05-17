@@ -2,8 +2,18 @@ const express = require('express');
 const router = express.Router();
 const Problema = require('../problema.model');
 
-router.post('/', (req, res) => {
-    let problema = new Problema(req.body);
+router.post('/add', (req, res) => {
+    const problema = new Problema({
+    problema_nombre: req.body.problema_nombre,
+    problema_descripcion: req.body.problema_descripcion,
+    problema_foto: req.body.problema_foto,
+    problema_categoria: req.body.problema_categoria,
+    problema_agregado_por: req.body.problema_agregado_por,
+    problema_libro: req.body.problema_libro,
+    problema_fecha_libro: req.body.problema_fecha_libro,
+    problema_nivel: req.body.problema_nivel,
+    problema_respuesta: req.body.problema_respuesta
+    });
     problema.save()
         .then(problema => {
             res.status(200).json({'problema': 'El problema se agregó con éxito.'});
