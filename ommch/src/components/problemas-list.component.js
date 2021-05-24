@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-//import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { BsFillEyeSlashFill } from 'react-icons/bs';
@@ -16,8 +16,8 @@ const Problema = props => (
         <td className={props.problema.problema_usado ? 'usado' : ''}>{props.problema.problema_agregado_por}</td>
         <td>
             <Link to={"/edit/" + props.problema._id}><BsPencilSquare />  </Link>
-            <Link to={"/gets/" + props.problema._id}>   <BsFillEyeSlashFill /></Link>
-            <Link to={"/deletes/" + props.problema._id}>   <BsFillTrashFill /></Link>
+            <Link to={"/probelmas/" + props.problema._id}>   <BsFillEyeSlashFill /></Link>
+            <Link to={"/borrar/" + props.problema._id}>   <BsFillTrashFill /></Link>
         </td>
     </tr>
 )
@@ -30,7 +30,7 @@ export default class ProblemasList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/gets')
+        axios.get('http://localhost:4000/problemas/')
         .then(response => {
             this.setState({problemas: response.data});
         })
@@ -40,7 +40,7 @@ export default class ProblemasList extends Component {
     }
 
     componentDidUpdate() {
-        axios.get('http://localhost:4000/gets')
+        axios.get('http://localhost:4000/problemas/')
         .then(response => {
             this.setState({problemas: response.data});
         })
