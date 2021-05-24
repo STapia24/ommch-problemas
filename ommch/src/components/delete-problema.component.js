@@ -119,7 +119,7 @@ export default class DeleteProblema extends Component {
     render() {
         return (
             <div>
-                <h3>Edita el problema</h3>
+                <h3>Eliminar Problema</h3>
                 <form onSubmit={this.onSubmit}>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
