@@ -12,6 +12,8 @@ router.get('/', (req, res) => {
     }); 
 });
 
+router.get('/favicon.ico', (req, res) => res.status(204));
+
 router.get('/:id', (req, res) => {
     let id = req.params.id;
     Problema.findById(id, function(err, problema) {
