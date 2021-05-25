@@ -12,6 +12,9 @@ router.get('/', (req, res) => {
     }); 
 });
 
+// Ignore favicon.
+app.get('/favicon.ico', (req, res) => res.status(204));
+
 router.get('/:id', (req, res) => {
     let id = req.params.id;
     Problema.findById(id, function(err, problema) {
