@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 const PORT = process.env.PORT || 4000 ;
-const Problema = require('../problema.model');
+const Problema = require('./problema.model');
 require('dotenv/config')
 
 //Import Routes
