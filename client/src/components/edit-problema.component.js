@@ -35,7 +35,7 @@ export default class EditProblema extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/gets/'+this.props.match.params.id)
+        axios.get('https://ommch-problems.herokuapp.com/gets/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     problema_nombre: response.data.problema_nombre,
@@ -121,7 +121,7 @@ export default class EditProblema extends Component {
             problema_nivel: this.state.problema_nivel,
             problema_respuesta: this.state.problema_respuesta
         }
-        axios.post('http://localhost:4000/posts/'+this.props.match.params.id, obj)
+        axios.post('https://ommch-problems.herokuapp.com/posts/'+this.props.match.params.id, obj)
         .then( res => console.log(res.data));
         this.props.history.push('/');
     }
