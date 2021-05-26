@@ -26,7 +26,6 @@ function App() {
           <Navbar.Brand href="/">OMMCH Problemario</Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="/">Problemas</Nav.Link>
-            <Nav.Link href="/problemas-semana">Problemas de la Semana</Nav.Link>
             <Nav.Link href="/create">Agregar Problema</Nav.Link>
           </Nav>
           <Form inline>
