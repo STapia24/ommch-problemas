@@ -30,7 +30,7 @@ export default class ProblemasList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/gets')
+        axios.get('https://ommch-problems.herokuapp.com/gets')
         .then(response => {
             this.setState({problemas: response.data});
         })
@@ -40,7 +40,7 @@ export default class ProblemasList extends Component {
     }
 
     componentDidUpdate() {
-        axios.get('http://localhost:4000/gets')
+        axios.get('https://ommch-problems.herokuapp.com/gets')
         .then(response => {
             this.setState({problemas: response.data});
         })
